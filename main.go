@@ -24,8 +24,8 @@ func main() {
 		fmt.Fprintf(w, "I'm up")
 	})
 
-	// run this go routine every 5 minutes
 	go func() {
+		// run every 5 minutes
 		for range time.Tick(time.Minute * 5) {
 			draws := getDraws()
 			sendSms(draws)
