@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/joho/godotenv"
 )
@@ -23,9 +24,13 @@ func main() {
 		fmt.Fprintf(w, "I'm up")
 	})
 
-	// TODO: repeat these two lines every 5 minutes
-	draws := getDraws()
-	sendSms(draws)
+	// run this go routine every 5 minutes
+	go func() {
+		for range time.Tick(time.Minute * 5) {
+			draws := getDraws()
+			sendSms(draws)
+		}
+	}()
 
 	var port string
 	if os.Getenv("PORT") != "" {
