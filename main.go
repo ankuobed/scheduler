@@ -12,7 +12,7 @@ import (
 func main() {
 	// load .env file
 
-	if os.Getenv("APP_ENV") == "production" {
+	if os.Getenv("APP_ENV") != "production" {
 		err := godotenv.Load()
 		if err != nil {
 			log.Fatal("Error loading .env file")
