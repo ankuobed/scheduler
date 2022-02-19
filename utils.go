@@ -103,7 +103,7 @@ func sendSms(message string) {
 		data, _ := json.Marshal(map[string]string{
 			"phone":   "+2330540810791",
 			"message": message,
-			"key":     "textbelttttt",
+			"key":     "textbelt",
 		})
 
 		requestBody := bytes.NewBuffer(data)
